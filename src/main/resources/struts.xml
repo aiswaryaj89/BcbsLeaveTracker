@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="false" />
+
+    <package name="login" extends="struts-default">
+   
+      <action name="loginaction"  class="com.leavetracker.actions.loginAction"
+         method="execute">
+         <result name="success">/welcome.jsp</result>
+         <result name="error">/error.jsp</result>
+      </action>
+
+        <action name="LeaveRequestAction" class="com.leavetracker.actions.LeaveRequestAction" >
+            <result name="success">leaveform.jsp</result>
+            <result name="error" >error.jsp</result>
+        </action>
+
+      <action name="ProcessLeaveAction" class="com.leavetracker.actions.ProcessLeaveAction">
+            <result name="success" type="redirectAction"></result>
+                <param name="actionName">emailAction</param>
+       			 <param name="parse">true</param>
+             <result name="error" >error.jsp </result> 
+        </action>
+    </package>
+    
+</struts>
